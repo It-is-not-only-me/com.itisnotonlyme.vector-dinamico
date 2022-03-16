@@ -1,16 +1,17 @@
 {
-    "name": "com.itisnotonlyme.nombre",
-    "version": "1.0.0",
-    "displayName": "Nombre Lindo",
-    "description": "Descripcion linda",
-    "unity": "2020.3",
-    "keywords": [
-      "Key", 
-      "Words"
-    ],
-    "author": {
-      "name": "Juan Ignacio Biancuzzo",
-      "email": "jbiancuzzo@fi.uba.ar"
-    },
-    "type": "tool"
-  }
+  "name": "com.itisnotonlyme.vector-dinamico",
+  "version": "1.0.0",
+  "displayName": "Vector dinamico",
+  "description": "With this vector you can create every axis that the vector uses",
+  "unity": "2020.3",
+  "keywords": [
+    "Vector",
+    "Dinamico",
+    "Axis"
+  ],
+  "author": {
+    "name": "Juan Ignacio Biancuzzo",
+    "email": "jbiancuzzo@fi.uba.ar"
+  },
+  "type": "tool"
+}
