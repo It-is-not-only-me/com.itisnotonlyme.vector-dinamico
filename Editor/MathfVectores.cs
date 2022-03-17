@@ -4,10 +4,44 @@ namespace ItIsNotOnlyMe.VectorDinamico
 {
     public static class MathfVectores
     {
-        
+        public static Vector Sumar(Vector vector, Vector otro)
+        {
+            Vector resultado = Duplicar(vector);
+            resultado.Sumar(otro);
+            return resultado;
+        }
+
+        public static Vector Restar(Vector vector, Vector otro)
+        {
+            Vector resultado = Duplicar(vector);
+            resultado.Restar(otro);
+            return resultado;
+        }
+
+        public static Vector Multiplicar(Vector vector, float escalar)
+        {
+            Vector resultado = Duplicar(vector);
+            resultado.Multiplicar(escalar);
+            return resultado;
+        }
+
+        public static Vector Multiplicar(Vector vector, float escalar, IIdentificador identificador)
+        {
+            Vector resultado = Duplicar(vector);
+            resultado.Multiplicar(escalar, identificador);
+            return resultado;
+        }
+
+        public static Vector Dividir(Vector vector, float escalar)
+        {
+            Vector resultado = Duplicar(vector);
+            resultado.Dividir(escalar);
+            return resultado;
+        }
+
         public static float Distancia(Vector vector, Vector otro)
         {
-            Vector direccion = (Vector) vector.Restar(otro);
+            Vector direccion = Restar(vector, otro);
             return Modulo(direccion);
         }
 
@@ -28,22 +62,29 @@ namespace ItIsNotOnlyMe.VectorDinamico
             return Mathf.Sign(Similitud(vector, otro)) * (moduloProyeccion / moduloPropio);
         }
 
-        private static Vector Proyeccion(Vector vector, Vector otro)
+        public static Vector Proyeccion(Vector vector, Vector otro)
         {
             float moduloCuadrado = vector.ProductoInterno(vector);
             float escalar = (moduloCuadrado == 0f) ? 0f : vector.ProductoInterno(otro) / moduloCuadrado;
-            return vector.Multiplicar(escalar);
+            return Multiplicar(vector, escalar);
         }
 
-        private static Vector Normalizar(Vector vector)
+        public static Vector Normalizar(Vector vector)
         {
             float modulo = Modulo(vector);
-            return vector.Dividir(modulo);
+            return Dividir(vector, modulo);
         }
 
-        private static float Modulo(Vector vector)
+        public static float Modulo(Vector vector)
         {
             return Mathf.Sqrt(vector.ProductoInterno(vector));
+        }
+
+        private static Vector Duplicar(Vector vector)
+        {
+            Vector resultado = Vector.Nulo();
+            resultado.Sumar(vector);
+            return resultado;
         }
     }
 }

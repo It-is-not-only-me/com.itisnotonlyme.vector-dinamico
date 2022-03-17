@@ -22,43 +22,33 @@ namespace ItIsNotOnlyMe.VectorDinamico
 
         public bool EsIgual(Vector vector)
         {
-            Vector diferencia = Restar(vector);
+            Vector diferencia = MathfVectores.Restar(this, vector);
             return (float)Math.Round(diferencia.ProductoInterno(diferencia), 4) == 0f;
         }
 
-        public Vector Sumar(Vector vector)
+        public void Sumar(Vector vector)
         {
-            IComponente nuevaCadena = NuevaCadna();
-            nuevaCadena.Sumar(vector.NuevaCadna());
-            return new Vector(nuevaCadena);
+            _cadena.Sumar(vector.NuevaCadna());
         }
 
-        public Vector Restar(Vector vector)
+        public void Restar(Vector vector)
         {
-            IComponente nuevaCadena = NuevaCadna();
-            nuevaCadena.Restar(vector.NuevaCadna());
-            return new Vector(nuevaCadena);
+            _cadena.Restar(vector._cadena);
         }
 
-        public Vector Multiplicar(float escalar)
+        public void Multiplicar(float escalar)
         {
-            IComponente nuevaCadena = NuevaCadna();
-            nuevaCadena.Multiplicar(escalar);
-            return new Vector(nuevaCadena);
+            _cadena.Multiplicar(escalar);
         }
 
-        public Vector Multiplicar(float escalar, IIdentificador identificador)
+        public void Multiplicar(float escalar, IIdentificador identificador)
         {
-            IComponente nuevaCadena = NuevaCadna();
-            nuevaCadena.Multiplicar(escalar, identificador);
-            return new Vector(nuevaCadena);
+            _cadena.Multiplicar(escalar, identificador);
         }
 
-        public Vector Dividir(float escalar)
+        public void Dividir(float escalar)
         {
-            IComponente nuevaCadena = NuevaCadna();
-            nuevaCadena.Dividir(escalar);
-            return new Vector(nuevaCadena);
+            _cadena.Dividir(escalar);
         }
 
         public float ProductoInterno(Vector vector)
@@ -71,7 +61,7 @@ namespace ItIsNotOnlyMe.VectorDinamico
             return _cadena.Copia();
         }
 
-        public static Vector VectorNulo()
+        public static Vector Nulo()
         {
             return new Vector(new ComponenteNulo());
         }

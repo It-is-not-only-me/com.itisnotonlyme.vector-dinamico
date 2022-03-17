@@ -41,7 +41,7 @@ public class VectorTest
         Vector vector1 = CrearVector(8, 0);
         Vector vector2 = CrearVector(0, -3, 3);
 
-        Vector resultado = vector1.Sumar(vector2);
+        Vector resultado = MathfVectores.Sumar(vector1, vector2);
         Vector vectorEsperado = CrearVector(8, -3, 3);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -53,7 +53,7 @@ public class VectorTest
         Vector vector1 = CrearVector(8, 0);
         Vector vector2 = CrearVector(0, -3, 3);
 
-        Vector resultado = vector1.Restar(vector2);
+        Vector resultado = MathfVectores.Restar(vector1, vector2);
         Vector vectorEsperado = CrearVector(8, 3, -3);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -66,7 +66,7 @@ public class VectorTest
         Vector vector2 = CrearVector(-5);
         Vector vector3 = CrearVector(0, -3, 3);
 
-        Vector resultado = vector1.Sumar(vector2).Restar(vector3);
+        Vector resultado = MathfVectores.Restar(MathfVectores.Sumar(vector1, vector2), vector3);
         Vector vectorEsperado = CrearVector(8, -2, -3);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -77,7 +77,7 @@ public class VectorTest
     {
         Vector vector = CrearVector(0, -3, 3);
 
-        Vector resultado = vector.Multiplicar(4f);
+        Vector resultado = MathfVectores.Multiplicar(vector, 4f);
         Vector vectorEsperado = CrearVector(0, -12f, 12f);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -88,7 +88,7 @@ public class VectorTest
     {
         Vector vector = CrearVector(0, -3, 3);
 
-        Vector resultado = vector.Dividir(3f);
+        Vector resultado = MathfVectores.Dividir(vector, 3f);
         Vector vectorEsperado = CrearVector(0, -1f, 1f);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -109,7 +109,7 @@ public class VectorTest
         Vector vector1 = CrearVector(8, 0);
         Vector vector2 = CrearVector(2, -3, 3);
 
-        Vector resultado = vector1.Sumar(vector2);
+        Vector resultado = MathfVectores.Sumar(vector1, vector2);
         float productoInterno = 10 * 10 + 3 * 3 + 3 * 3;
 
         Assert.AreEqual(productoInterno, resultado.ProductoInterno(resultado));
@@ -121,7 +121,7 @@ public class VectorTest
         Vector vector1 = CrearVector(8, 0);
         Vector vector2 = CrearVector(2, -3, 3);
 
-        Vector resultado = vector1.Restar(vector2);
+        Vector resultado = MathfVectores.Restar(vector1, vector2);
         float productoInterno = 6 * 6 + 3 * 3 + 3 * 3;
 
         Assert.AreEqual(productoInterno, resultado.ProductoInterno(resultado));
@@ -230,7 +230,7 @@ public class VectorTest
         Vector vector = CrearVector(valorX, valorY, valorZ);
 
         float multiplicador = 2f;
-        Vector resultado = vector.Multiplicar(multiplicador, _x);
+        Vector resultado = MathfVectores.Multiplicar(vector, multiplicador, _x);
         Vector vectorEsperado = CrearVector(valorX * multiplicador, valorY, valorZ);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
@@ -246,7 +246,8 @@ public class VectorTest
         Vector vector2 = CrearVector(valorX2, valorY2, valorZ2);
 
         float multiplicador = 2f;
-        Vector resultado = (vector1.Sumar(vector2)).Multiplicar(multiplicador, _x);
+        Vector suma = MathfVectores.Sumar(vector1, vector2);
+        Vector resultado = MathfVectores.Multiplicar(suma, multiplicador, _x);
         Vector vectorEsperado = CrearVector((valorX1 + valorX2) * multiplicador, valorY1 + valorY2, valorZ1 + valorZ2);
 
         Assert.IsTrue(resultado.EsIgual(vectorEsperado));
