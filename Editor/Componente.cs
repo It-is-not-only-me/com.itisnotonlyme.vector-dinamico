@@ -24,11 +24,11 @@ namespace ItIsNotOnlyMe.VectorDinamico
 
         public bool EsIgual(IComponente componente)
         {
-            return componente.EsIgual(_idetificador, _valor);
-        }
+            Componente nuevoComponente = (Componente)componente;
 
-        public bool EsIgual(IIdentificador identificador, float valor)
-        {
+            IIdentificador identificador = nuevoComponente._idetificador;
+            float valor = nuevoComponente._valor;
+
             if (!_idetificador.EsIgual(identificador))
                 return false;
             return (float)Math.Round(_valor - valor, 4) == 0f;

@@ -16,11 +16,6 @@ namespace ItIsNotOnlyMe.VectorDinamico
             return false;
         }
 
-        public bool EsIgual(IIdentificador identificador, float valor)
-        {
-            return false;
-        }
-
         public void Sumar(IComponente componente)
         {
             if (_componente == null)

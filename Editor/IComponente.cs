@@ -6,8 +6,6 @@ namespace ItIsNotOnlyMe.VectorDinamico
     {
         public bool EsIgual(IComponente componente);
 
-        public bool EsIgual(IIdentificador identificador, float valor);
-
         public void Sumar(IComponente componente);
 
         public void Restar(IComponente componente);
